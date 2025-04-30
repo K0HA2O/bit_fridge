@@ -1,0 +1,66 @@
+  body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #3c763d;
+            color: white;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .chart-container, .table-container {
+            width: 45%;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        table th {
+            background-color: #3c763d;
+            color: white;
+        }
+        .filter {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            align-items: center;
+        }
+        .filter select, .filter button {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        .filter button {
+            background-color: #3c763d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .filter button:hover {
+            background-color: #2e5b2b;
+        }
+        .scrollable-table {
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ddd;
+        }

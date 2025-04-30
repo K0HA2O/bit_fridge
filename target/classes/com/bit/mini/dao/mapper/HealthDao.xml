@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bit.mini.dao.HealthDao">
+
+	<select id="getHealthData" parameterType="map"
+		resultType="com.bit.mini.dto.HealthDataDto">
+		SELECT * FROM userhealthdata
+		WHERE user_id = #{user_id}
+		AND
+		meal_time = #{meal_time}
+		AND meal_status = #{meal_status}
+		ORDER BY date
+		ASC
+	</select>
+
+	<insert id="insertBloodSugarData"
+		parameterType="com.bit.mini.dto.HealthDataDto">
+		INSERT INTO userhealthdata (user_id, blood_sugar_level,
+		date, meal_time,
+		meal_status, created_at)
+		VALUES (#{user_id},
+		#{blood_sugar_level}, #{date}, #{meal_time},
+		#{meal_status},
+		#{created_at})
+	</insert>
+
+	<update id="updateBloodSugarData"
+		parameterType="com.bit.mini.dto.HealthDataDto">
+		UPDATE userhealthdata
+		SET blood_sugar_level =
+		#{blood_sugar_level}, created_at = #{created_at}
+		WHERE user_id =
+		#{user_id} AND meal_time = #{meal_time} AND meal_status =
+		#{meal_status} AND date = #{date}
+	</update>
+
+	<select id="getHealthDataByMealTimeAndStatus"
+		parameterType="map" resultType="com.bit.mini.dto.HealthDataDto">
+		SELECT * FROM userhealthdata
+		WHERE user_id = #{user_id}
+		AND meal_time = #{meal_time}
+		AND meal_status = #{meal_status}
+		AND date = #{date}
+		LIMIT 1
+	</select>
+
+</mapper>

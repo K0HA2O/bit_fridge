@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bit.mini.dao.CalendarDao">
+
+	<insert id="addRecipeToCalendar">
+		INSERT INTO RecipeCalendar (recipe_id, recipe_title,
+		user_id, event_date)
+		VALUES (#{recipe_id}, #{recipe_title}, #{user_id}, #{event_date})
+	</insert>
+
+	<select id="getAllRecipeEvents" resultType="map">
+		SELECT recipe_id, recipe_title AS title, event_date AS date, id FROM
+		RecipeCalendar where user_id = #{user_id}
+	</select>
+
+	<delete id="deleteEvent">
+		DELETE FROM RecipeCalendar WHERE user_id = #{user_id} AND id = #{event_id}
+	</delete>
+
+	<update id="updateEventDate">
+		UPDATE RecipeCalendar
+		SET event_date = #{event_date}
+		WHERE user_id = #{user_id} AND id = #{event_id}
+	</update>
+
+</mapper>
