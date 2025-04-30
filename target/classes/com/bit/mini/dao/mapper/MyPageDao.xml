@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bit.mini.dao.MyPageDao">
+
+	<insert id="insertMyRecipe"
+		parameterType="com.bit.mini.dto.MyRecipeDto">
+		insert into myrecipe (user_id, recipe_id, recipe_title,
+		recipe_image)
+		value (#{user_id}, #{recipe_id}, #{recipe_title},
+		#{recipe_image})
+	</insert>
+
+	<select id="getMyRecipeList"
+		resultType="com.bit.mini.dto.MyRecipeDto">
+		select * from myrecipe where user_id = #{user_id}
+	</select>
+
+	<delete id="deleteMyRecipe">
+		delete from myrecipe where id = #{id}
+	</delete>
+
+	<select id="getMyPost" resultType="com.bit.mini.dto.CommunityPostDto">
+		SELECT
+		p.id,
+		p.title,
+		p.content,
+		p.imagePath,
+		p.user_id,
+		p.hit,
+		p.created_at,
+		p.updated_at,
+		(SELECT u.name FROM users u WHERE u.id = p.user_id) AS author,
+		(SELECT COUNT(*) FROM likes l WHERE l.post_id = p.id) AS likeCount
+		FROM posts p
+		WHERE p.user_id = #{user_id}
+		ORDER BY p.created_at DESC
+	</select>
+
+	<delete id="deleteMyPost">
+		delete from posts where id = #{id}
+	</delete>
+
+	<select id="getMyInfo" resultType="com.bit.mini.dto.UserDto">
+		select * from users where id =
+		#{user_id}
+	</select>
+
+	<update id="modifyInfo" parameterType="com.bit.mini.dto.UserDto">
+		update users set username
+		= #{username}, name = #{name}, email = #{email}, birthdate =
+		#{birthdate}, gender = #{gender}, allergies = #{allergies} where id =
+		#{id}
+	</update>
+
+</mapper>

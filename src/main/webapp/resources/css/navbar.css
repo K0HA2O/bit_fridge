@@ -1,0 +1,46 @@
+@charset "EUC-KR";
+
+.navbar-brand {
+	color: #23983e;
+	/* 브랜드 텍스트 색상 변경 */
+	font-weight: bold;
+}
+
+.nav-link {
+	color: #000000;
+	/* 링크 텍스트 색상 변경 */
+}
+
+.recipe-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;	
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.recipe-title {
+	font-size: 2em;
+	font-weight: bold;
+	margin: 0;
+}
+
+.fresh-date {
+	font-size: 1em;
+	color: #6c757d;
+	margin-left: 10px;
+}
+
+.custom-button {
+	background-color: #23983e;
+	color: white;
+	border-radius: 10px;
+	padding: 5px 15px;
+	text-decoration: none;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-button:hover {
+	background-color: #00721b;
+	color: white;
+}
